@@ -17,11 +17,12 @@
 		nixosConfigurations = {
 			dkozicki-thinkbook = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
+				specialArgs = {inherit inputs;};
 				modules = [
 					./configuration.nix
 					./devices/thinkbook/default.nix
-					./hosts/dkozicki-thinkbook/packages.nix
 					sops-nix.nixosModules.sops
+					./hosts/dkozicki-thinkbook/packages.nix
 						home-manager.nixosModules.home-manager
 						{
 							home-manager={

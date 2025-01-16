@@ -155,3 +155,4 @@ alias gdiff='git diff'
 alias glcf='git diff-tree --no-commit-id --name-only HEAD -r'
 alias rebuild='nixos-rebuild switch --use-remote-sudo --flake ${NIX_CFG_PATH}'
 alias rebuild-boot='nixos-rebuild boot --use-remote-sudo --flake ${NIX_CFG_PATH}'
+alias vim=nvim

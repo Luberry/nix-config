@@ -53,6 +53,12 @@
 		path=null;
 		properties=null;
 	};
+	xdg.configFile={
+		"nvim/init.vim"={
+			enable = true;
+			source = ./dotfiles/init.vim;	
+		};
+	};
 	home = {
 		username = "dkozicki";
 		stateVersion = "24.11";

@@ -42,7 +42,7 @@ nix.settings.experimental-features="nix-command flakes";
 			ulauncher
 			rxvt-unicode
 			usbutils
-			vim
+neovim
 zip
 unzip
 killall
@@ -54,6 +54,7 @@ bash
 playerctl
 iproute2
 plexamp
+nodejs_20
 	];
 # Enable the gnome-keyring secrets vault. 
 # Will be exposed through DBus to programs willing to store secrets.
