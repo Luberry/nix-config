@@ -12,6 +12,7 @@
     nix-packages.url = "github:Luberry/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       sops-nix,
       systems,
       treefmt-nix,
+      flake-parts,
       ...
     }:
     let
@@ -30,16 +32,42 @@
 
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      inherit (inputs.nixpkgs.lib) genAttrs;
+      inherit (self) outputs;
+      legacyPackagesWithOverlays =
+        {
+          extraOverlays ? [ ],
+        }:
+        (eachSystem (
+          system:
+          import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues {
+              default = inputs.nixpkgs.lib.composeManyExtensions (
+                [ (import ./overlays { inherit inputs; }) ] ++ extraOverlays
+              );
+            };
+            config.allowUnfree = true;
+            config.permittedInsecurePackages = [
+              "electron-24.8.6"
+              "electron-25.9.0"
+            ];
+          }
+        ));
+      # but create one with normal overlays if not
+      legacyPackages = legacyPackagesWithOverlays { };
     in
     {
+      overlays = {
+        default = import ./overlays { inherit inputs; };
+      };
+
       # for `nix fmt`
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-      # for `nix flake check`
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+      # allow for extra overlays to be added later
       nixosConfigurations = {
         dkozicki-thinkbook = nixpkgs.lib.nixosSystem {
+          #pkgs=legacyPackages."x86_64-linux";
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [

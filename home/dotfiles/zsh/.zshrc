@@ -138,6 +138,10 @@ export NVM_DIR="$HOME/.nvm"
 
 export EDITOR='nvim'
 
+if [[ "$(uname)"!="Darwin" ]]; then	
+  alias pbcopy=wl-copy
+  alias pbpaste=wl-paste
+fi
 alias got='go test --covermode=atomic --coverprofile c.out'
 alias gotc='got && go tool cover -html=c.out && rm c.out'
 alias gdiff='git diff'

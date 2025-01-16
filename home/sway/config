@@ -133,7 +133,7 @@ bindsym $mod+l exec swaylock -s fill -i ~/.config/sway/wallpaper.jpg
 bindsym $mod+ctrl+q exec swaylock -s fill -i ~/.config/sway/wallpaper.jpg
 
 #Screenshot
-bindsym $mod+Shift+p exec ~/.config/sway/snipping.sh 
+bindsym $mod+Shift+p exec grim -g "$(slurp)" - |wl-copy
 
 #launch apps
 bindsym XF86HomePage exec env firefox 

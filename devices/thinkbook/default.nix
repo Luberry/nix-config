@@ -21,9 +21,9 @@
     acpid = {
       enable = true;
     };
-  };
-  programs = {
-    light.enable = true;
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664"
+    '';
   };
   hardware.acpilight.enable = true;
 
