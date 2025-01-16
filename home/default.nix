@@ -1,9 +1,9 @@
 {
   config,
-    pkgs,
-    lib,
-    inputs,
-    ...
+  pkgs,
+  lib,
+  inputs,
+  ...
 }:
 
 {
@@ -11,8 +11,8 @@
     home-manager.enable = true;
     git.enable = true;
     zsh.oh-my-zsh.custom = "${config.home.homeDirectory}/.oh-my-zsh-custom";
-    waybar={
-      enable=true;
+    waybar = {
+      enable = true;
     };
 
   };
@@ -29,25 +29,25 @@
       enable = true;
       source = ./sway/wallpaper.jpg;
     };
-    "touchegg/touchegg.conf"={
-      enable=true;
-      source=./dotfiles/touchegg.conf;
+    "touchegg/touchegg.conf" = {
+      enable = true;
+      source = ./dotfiles/touchegg.conf;
     };
-    "ulauncher/extensions.json"={
-      enable=true;
-      source=./dotfiles/ulauncher/extensions.json;
+    "ulauncher/extensions.json" = {
+      enable = true;
+      source = ./dotfiles/ulauncher/extensions.json;
     };
-    "ulauncher/settings.json"={
-      enable=true;
-      source=./dotfiles/ulauncher/settings.json;
+    "ulauncher/settings.json" = {
+      enable = true;
+      source = ./dotfiles/ulauncher/settings.json;
     };
-    "ulauncher/shortcuts.json"={
-      enable=true;
-      source=./dotfiles/ulauncher/shortcuts.json;
+    "ulauncher/shortcuts.json" = {
+      enable = true;
+      source = ./dotfiles/ulauncher/shortcuts.json;
     };
-    "ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db"={
-      enable=true;
-      source=./dotfiles/ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db;
+    "ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db" = {
+      enable = true;
+      source = ./dotfiles/ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db;
     };
   };
   home = {
@@ -67,6 +67,9 @@
       };
       ".oh-my-zsh-custom/themes/agnoster-newline.zsh-theme" = {
         source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
+      };
+      ".local/bin/teamsfix" = {
+        source = ./dotfiles/teamsfix;
       };
     };
   };
@@ -98,10 +101,10 @@
       config = '''';
     };
     caffeine.enable = true;
-    dunst={
-      enable=true;
-      settings={
-        global={
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
           follow = "mouse";
           geometry = "300x60-20+48";
           indicate_hidden = "yes";
@@ -132,29 +135,29 @@
           class = "Dunst";
 
         };
-        shortcuts={
-            close = "ctrl+space";
-            close_all = "ctrl+shift+space";
-            history = "ctrl+grave";
-            context = "ctrl+shift+period";
+        shortcuts = {
+          close = "ctrl+space";
+          close_all = "ctrl+shift+space";
+          history = "ctrl+grave";
+          context = "ctrl+shift+period";
         };
-        urgency_low={
-timeout = 4;
-background = "#141c21";
-foreground = "#93a1a1";
-frame_color = "#8bc34a";
+        urgency_low = {
+          timeout = 4;
+          background = "#141c21";
+          foreground = "#93a1a1";
+          frame_color = "#8bc34a";
         };
-        urgency_normal={
-timeout = 8;
-background = "#141c21";
-foreground = "#93a1a1";
-frame_color = "#ba68c8";
+        urgency_normal = {
+          timeout = 8;
+          background = "#141c21";
+          foreground = "#93a1a1";
+          frame_color = "#ba68c8";
         };
-        urgency_critical={
-timeout = 0;
-background = "#141c21";
-foreground = "#93a1a1";
-frame_color = "#ff7043";
+        urgency_critical = {
+          timeout = 0;
+          background = "#141c21";
+          foreground = "#93a1a1";
+          frame_color = "#ff7043";
         };
       };
     };

@@ -76,6 +76,7 @@
                 users.dkozicki.imports = [
                   ./home
                   ./home/work.nix
+                  ./home/bluetooth.nix
                 ];
               };
 

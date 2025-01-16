@@ -133,12 +133,13 @@
 
   fonts.packages = with pkgs; [
     powerline-fonts
+    font-awesome
+    meslo-lgs-nf
   ];
   security.polkit.enable = true;
   services.touchegg.enable = true;
   services.avahi.enable = true;
   virtualisation.docker.enable = true;
-  services.blueman.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   # environment.systemPackages = with pkgs; [

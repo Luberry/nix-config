@@ -24,7 +24,14 @@
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", GROUP="video", MODE="0664"
     '';
+    blueman.enable = true;
   };
-  hardware.acpilight.enable = true;
+  hardware = {
+    acpilight.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
 
 }
