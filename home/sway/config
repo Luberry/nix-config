@@ -18,16 +18,18 @@ exec --no-startup-id xset r 66
 #Bluetooth Manger
 exec --no-startup-id blueman-applet
 #set backlight to 20%
-#exec --no-startup-id xbacklight -set 20
+exec --no-startup-id xbacklight -set 20
 #restore wallpaper
-exec --no-startup-id feh --bg-fill /etc/nixos/home/sway/wallpaper.jpg
+exec --no-startup-id swaybg -m fill -i ~/.config/sway/wallpaper.jpg
 #remap specified keys
-#exec_always --no-startup-id /etc/nixos/home/sway/.Xmodmap
+#exec_always --no-startup-id ~/.config/sway/.Xmodmap
 exec_always --no-startup-id xrdb ~/.Xresources  
 #load urxvtd on start
 exec --no-startup-id urxvtd
 exec --no-startup-id touchegg
 exec --no-startup-id ulauncher --hide-window
+exec --no-startup-id xset s 300 5
+exec swayidle -w before-sleep 'swaylock -s fill -i ~/.config/sway/wallpaper.jpg'
 #exec --no-startup-id start-pulseaudio-x11
 #exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 #exec --no-startup-id firefox
@@ -114,7 +116,7 @@ bar {
 # i3bar position
         position top
                 status_command i3blocks -c ~/.config/i3blocks/top
-# -c /etc/nixos/home/sway/status.conf
+# -c ~/.config/sway/status.conf
 }
 
 #####End Style###################
@@ -127,17 +129,15 @@ bar {
 set $mod Mod4
 
 #lock
-bindsym $mod+l exec i3lock -i /home/dkozicki/.i3/wallpaper.png -t -n
-bindsym $mod+ctrl+q exec i3lock -i /home/dkozicki/.i3/wallpaper.png -t -n
+bindsym $mod+l exec swaylock -s fill -i ~/.config/sway/wallpaper.jpg
+bindsym $mod+ctrl+q exec swaylock -s fill -i ~/.config/sway/wallpaper.jpg
 
 #Screenshot
-bindsym $mod+Shift+p exec /etc/nixos/home/sway/snipping.sh 
+bindsym $mod+Shift+p exec ~/.config/sway/snipping.sh 
 
 #launch apps
-bindsym XF86HomePage exec env GTK_THEME=vimix-dark-amethyst firefox 
-bindsym $mod+Shift+f exec env GTK_THEME=vimix-dark-amethyst firefox 
-bindsym $mod+ctrl+f exec env GTK_THEME=vimix-dark-amethyst firefox --class "Firefox-work" -P "Work" 
-
+bindsym XF86HomePage exec env firefox 
+bindsym $mod+Shift+f exec env firefox 
 bindsym XF86Calculator exec speedcrunch
 
 
