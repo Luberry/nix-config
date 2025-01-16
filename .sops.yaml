@@ -1,0 +1,9 @@
+keys:
+  - &admin_dkozicki age196z6c523tvey68ke9xye4j0zytz38cgxrwny0eexva9yn6qhsy7qddsgl7
+  - &dkozicki-thinkbook age1u67agflejq2me2a6utfcnhrgjg8lfp74djlhr8ygdgpwh6uthvlquhq7uv
+creation_rules:
+  - path_regex: secrets.*$
+    key_groups:
+      - age:
+        - *admin_dkozicki
+        - *dkozicki-thinkbook

@@ -1,0 +1,7 @@
+#!/bin/bash
+#Add print to Mod4 to emulate a right windows button (Lenovo TP w541 layout)
+test=`xmodmap | grep Alt_R`
+if ["$test" == ""]; then
+xmodmap -e 'add Mod4 = Alt_R'
+fi
+# vim: filetype=sh
