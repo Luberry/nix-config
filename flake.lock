@@ -57,6 +57,22 @@
         "type": "github"
       }
     },
+    "i3blocks-contrib": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707384458,
+        "narHash": "sha256-iY9y3zLw5rUIHZkA9YLmyTDlgzZtIYAwWgHxaCS1+PI=",
+        "owner": "vivien",
+        "repo": "i3blocks-contrib",
+        "rev": "9d66d81da8d521941a349da26457f4965fd6fcbd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vivien",
+        "repo": "i3blocks-contrib",
+        "type": "github"
+      }
+    },
     "nix-packages": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -204,6 +220,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "i3blocks-contrib": "i3blocks-contrib",
         "nix-packages": "nix-packages",
         "nixpkgs": "nixpkgs_2",
         "p81": "p81",

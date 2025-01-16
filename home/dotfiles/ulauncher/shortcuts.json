@@ -1,0 +1,12 @@
+{
+    "fdcc1e14-4722-4718-8203-84cef82f1287": {
+        "id": "fdcc1e14-4722-4718-8203-84cef82f1287",
+        "name": "Duck Duck Go",
+        "keyword": "ddg",
+        "cmd": "https://duckduckgo.com/?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1736540052.500669
+    }
+}

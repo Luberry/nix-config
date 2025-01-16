@@ -13,6 +13,12 @@
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    i3blocks-contrib = {
+      type = "github";
+      owner = "vivien";
+      repo = "i3blocks-contrib";
+      flake = false;
+    };
   };
 
   outputs =
@@ -34,29 +40,8 @@
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
       inherit (inputs.nixpkgs.lib) genAttrs;
       inherit (self) outputs;
-      legacyPackagesWithOverlays =
-        {
-          extraOverlays ? [ ],
-        }:
-        (eachSystem (
-          system:
-          import nixpkgs {
-            inherit system;
-            overlays = builtins.attrValues {
-              default = inputs.nixpkgs.lib.composeManyExtensions (
-                [ (import ./overlays { inherit inputs; }) ] ++ extraOverlays
-              );
-            };
-            config.allowUnfree = true;
-            config.permittedInsecurePackages = [
-              "electron-24.8.6"
-              "electron-25.9.0"
-            ];
-          }
-        ));
-      # but create one with normal overlays if not
-      legacyPackages = legacyPackagesWithOverlays { };
     in
+    # but create one with normal overlays if not
     {
       overlays = {
         default = import ./overlays { inherit inputs; };
@@ -67,7 +52,14 @@
       # allow for extra overlays to be added later
       nixosConfigurations = {
         dkozicki-thinkbook = nixpkgs.lib.nixosSystem {
-          #pkgs=legacyPackages."x86_64-linux";
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+            overlays = builtins.attrValues {
+              default = (import ./overlays { inherit inputs; });
+            };
+          };
+
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [

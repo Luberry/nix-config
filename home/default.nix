@@ -1,8 +1,9 @@
 {
   config,
-  pkgs,
-  lib,
-  ...
+    pkgs,
+    lib,
+    inputs,
+    ...
 }:
 
 {
@@ -10,49 +11,10 @@
     home-manager.enable = true;
     git.enable = true;
     zsh.oh-my-zsh.custom = "${config.home.homeDirectory}/.oh-my-zsh-custom";
-
-    i3blocks = {
-      enable = true;
-      bars = {
-        top = {
-          playctl = {
-            command = "${config.home.homeDirectory}/.i3blocks/playerctl";
-            interval = 5;
-          };
-          volume = {
-            instance = "Master";
-            interval = "once";
-            signal = 10;
-          };
-          memory = {
-            label = "MEM";
-            interval = 30;
-          };
-          cpu_usage = {
-            label = "CPU";
-            interval = 10;
-            separator = false;
-          };
-          temp = {
-            command = "${config.home.homeDirectory}/.i3blocks/temperature";
-            interval = 10;
-          };
-          disk = {
-            label = "/";
-            instance = "/";
-            interval = 30;
-          };
-          iface = {
-            color = "#00FF00";
-            interval = 10;
-          };
-          time = {
-            command = "date '+%Y-%m-%d %H:%M:%S'";
-            interval = 5;
-          };
-        };
-      };
+    waybar={
+      enable=true;
     };
+
   };
   xresources = {
     path = null;
@@ -66,6 +28,26 @@
     "sway/wallpaper.jpg" = {
       enable = true;
       source = ./sway/wallpaper.jpg;
+    };
+    "touchegg/touchegg.conf"={
+      enable=true;
+      source=./dotfiles/touchegg.conf;
+    };
+    "ulauncher/extensions.json"={
+      enable=true;
+      source=./dotfiles/ulauncher/extensions.json;
+    };
+    "ulauncher/settings.json"={
+      enable=true;
+      source=./dotfiles/ulauncher/settings.json;
+    };
+    "ulauncher/shortcuts.json"={
+      enable=true;
+      source=./dotfiles/ulauncher/shortcuts.json;
+    };
+    "ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db"={
+      enable=true;
+      source=./dotfiles/ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db;
     };
   };
   home = {
@@ -86,14 +68,6 @@
       ".oh-my-zsh-custom/themes/agnoster-newline.zsh-theme" = {
         source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
       };
-
-      "${config.home.homeDirectory}/.i3blocks/playerctl" = {
-        source = ./sway/playerctl;
-      };
-      "${config.home.homeDirectory}/.i3blocks/temperature" = {
-        source = ./sway/temperature;
-      };
-
     };
   };
   fonts = {
@@ -124,6 +98,66 @@
       config = '''';
     };
     caffeine.enable = true;
+    dunst={
+      enable=true;
+      settings={
+        global={
+          follow = "mouse";
+          geometry = "300x60-20+48";
+          indicate_hidden = "yes";
+          shrink = "no";
+          separator_height = 0;
+          padding = 32;
+          horizontal_padding = 32;
+          frame_width = 2;
+          sort = "no";
+          idle_threshold = 120;
+          font = "Droid Sans Mono Dotted 8";
+          line_height = 4;
+          markup = "full";
+          format = ''%s\n%b'';
+          alignment = "left";
+          show_age_threshold = 60;
+          word_wrap = "yes";
+          ignore_newline = "no";
+          stack_duplicates = false;
+          hide_duplicate_count = "yes";
+          show_indicators = "no";
+          icon_position = "off";
+          sticky_history = "yes";
+          history_length = 20;
+          browser = "/run/current-system/sw/bin/firefox -new-tab";
+          always_run_script = true;
+          title = "Dunst";
+          class = "Dunst";
+
+        };
+        shortcuts={
+            close = "ctrl+space";
+            close_all = "ctrl+shift+space";
+            history = "ctrl+grave";
+            context = "ctrl+shift+period";
+        };
+        urgency_low={
+timeout = 4;
+background = "#141c21";
+foreground = "#93a1a1";
+frame_color = "#8bc34a";
+        };
+        urgency_normal={
+timeout = 8;
+background = "#141c21";
+foreground = "#93a1a1";
+frame_color = "#ba68c8";
+        };
+        urgency_critical={
+timeout = 0;
+background = "#141c21";
+foreground = "#93a1a1";
+frame_color = "#ff7043";
+        };
+      };
+    };
   };
 
   gtk = {

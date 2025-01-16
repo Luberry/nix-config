@@ -41,7 +41,6 @@
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system developed by swaywm maintainer
     ulauncher
     rxvt-unicode
     usbutils
@@ -58,13 +57,14 @@
     plexamp
     nodejs_20
     swaybg
-    #i3blocks-contrib
+    pavucontrol
+    alsa-utils
+    udiskie
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.
   services.gnome.gnome-keyring.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -78,11 +78,13 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   services.libinput.touchpad.naturalScrolling = true;
+  services.udisks2.enable = true;
 
   users.users = {
     dkozicki = {
