@@ -33,5 +33,8 @@
       powerOnBoot = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    light
+  ];
 
 }

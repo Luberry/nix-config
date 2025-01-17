@@ -124,7 +124,6 @@
       enable = true;
       config = '''';
     };
-    caffeine.enable = true;
     dunst = {
       enable = true;
       settings = {

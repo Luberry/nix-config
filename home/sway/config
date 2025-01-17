@@ -18,7 +18,7 @@ exec --no-startup-id xset r 66
 #Bluetooth Manger
 exec --no-startup-id blueman-applet
 #set backlight to 20%
-exec --no-startup-id xbacklight -set 20
+exec --no-startup-id light -S 20
 #restore wallpaper
 exec --no-startup-id swaybg -m fill -i ~/.config/sway/wallpaper.jpg
 #remap specified keys
@@ -156,8 +156,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 #backlight controls
-bindsym XF86MonBrightnessDown exec notify-send "Backlight - 5%"
-bindsym XF86MonBrightnessUp exec notify-send "Backlight + 5%"
+bindsym XF86MonBrightnessDown exec notify-send "Backlight - 5%" && light -U 5 
+bindsym XF86MonBrightnessUp exec notify-send "Backlight + 5%" && light -A 5
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
