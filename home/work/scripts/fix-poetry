@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+VENV_PATH=$(poetry run sh -c 'echo $VIRTUAL_ENV') fix-python

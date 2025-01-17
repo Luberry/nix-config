@@ -89,11 +89,24 @@ function start_redis {
     export REDIS_SERVER_URL=$(container_ip $CONTAINER_NAME)
     echo "redis UP AT: $REDIS_SERVER_URL"
 }
+
+function start_itfs {
+  if ! is_container_running itfs; then
+   docker run -d --name itfs -p 9000:9000 --rm -it docker.imubit.com/imubit-dlpc/product/dlpc/dlpc-itfs:latest
+  fi
+};
+
 export AWS_PROFILE=211816962214_elevated-dev-stage-access
 alias external_stage='aws eks update-kubeconfig --region us-east-1 --name imubit_aws_external_stage --profile 943140961950_elevated-dev-stage-access'
 alias internal_stage='aws eks update-kubeconfig --region us-east-1 --name imubit_aws_internal_stage --profile 211816962214_elevated-dev-stage-access'
 alias external_prod='aws eks update-kubeconfig --region us-east-1 --name imubit_aws_external_prod --profile 644671406535_elevated-dev-stage-access'
 alias kbapps='kubectl -nimubit-apps'
 alias as='aws sso login --profile'
+if [[ "$(uname)" == "Darwin" ]];then
 	export ITFS_SSH_PORT=10005
 	export ITFS_HOSTNAME=127.0.0.1
+else
+  start_itfs
+  export ITFS_SSH_PORT=9000
+  export ITFS_HOSTNAME=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' itfs)
+fi

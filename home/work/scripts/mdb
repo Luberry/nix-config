@@ -1,4 +1,6 @@
 #! /usr/bin/env bash
+LD_LIBRARY_PATH="$(nix eval --raw nixpkgs.stdenv.cc.cc.lib):$LD_LIBRARY_PATH}"
+
 sed_cmd=sed
 if [[ "$(uname)" == "Darwin" ]];then
   sed_cmd=gsed

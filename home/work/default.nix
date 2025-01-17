@@ -28,11 +28,13 @@
         }) { inherit system; };
       in
       [
-        pgadmin4
+        dbeaver-bin
         go
         python311
         pyenv
         poetryPkgs.poetry
+        postgresql.dev
+        inputs.fix-python.packages.${system}.default
       ];
     file = {
       ".zshrc-extra.zsh" = {
@@ -64,6 +66,9 @@
       };
       ".local/bin/start-step-details" = {
         source = ./scripts/start-step-details;
+      };
+      ".local/bin/fix-poetry" = {
+        source = ./scripts/fix-poetry;
       };
     };
   };
