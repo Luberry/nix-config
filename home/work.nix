@@ -17,7 +17,13 @@
       extraConfig.gpg.format = "ssh";
     };
   };
+
   home = {
+    packages = with pkgs; [
+      pgadmin4
+      go
+      python311
+    ];
     file = {
       ".zshrc-extra.zsh" = {
         source = ./dotfiles/zsh/.zshrc.work.zsh;

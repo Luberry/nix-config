@@ -15,10 +15,10 @@
       enable = true;
     };
     vscode = {
-      enable=true;
-      extensions=with pkgs.vscode-extensions;[
-asvetliakov.vscode-neovim
-viktorqvarfordt.vscode-pitch-black-theme
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        asvetliakov.vscode-neovim
+        viktorqvarfordt.vscode-pitch-black-theme
       ];
     };
 
@@ -75,9 +75,6 @@ viktorqvarfordt.vscode-pitch-black-theme
       ".oh-my-zsh-custom/themes/agnoster-newline.zsh-theme" = {
         source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
       };
-      ".local/bin/teamsfix" = {
-        source = ./dotfiles/teamsfix;
-      };
     };
   };
   fonts = {
@@ -97,6 +94,26 @@ viktorqvarfordt.vscode-pitch-black-theme
     };
   };
   services = {
+    swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 500;
+          command = "${pkgs.swaylock}/bin/swaylock -s fill -i ~/.config/sway/wallpaper.jpg";
+        }
+        {
+          timeout = 300;
+          command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock}/bin/swaylock -s fill -i ~/.config/sway/wallpaper.jpg";
+        }
+      ];
+    };
     udiskie = {
       enable = true;
       tray = "always";
