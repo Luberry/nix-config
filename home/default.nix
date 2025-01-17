@@ -14,6 +14,13 @@
     waybar = {
       enable = true;
     };
+    vscode = {
+      enable=true;
+      extensions=with pkgs.vscode-extensions;[
+asvetliakov.vscode-neovim
+viktorqvarfordt.vscode-pitch-black-theme
+      ];
+    };
 
   };
   xresources = {

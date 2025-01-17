@@ -16,7 +16,6 @@
       };
       extraConfig.gpg.format = "ssh";
     };
-
   };
   home = {
     file = {
@@ -25,4 +24,5 @@
       };
     };
   };
+
 }
