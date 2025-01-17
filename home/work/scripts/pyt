@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+sed_cmd=sed
+if [[ "$(uname)" == "Darwin" ]];then
+  sed_cmd=gsed
+fi
+
+poetry run ${sed_cmd} -i 's/socket\.getfqdn()/"localhost"/g' "$VIRTUAL_ENV/lib/python3.11/site-packages/yoyo/backends.py"
+poetry run pytest -vvv $@

@@ -75,7 +75,7 @@
                 extraSpecialArgs = { inherit inputs; };
                 users.dkozicki.imports = [
                   ./home
-                  ./home/work.nix
+                  ./home/work
                   ./home/bluetooth.nix
                 ];
               };

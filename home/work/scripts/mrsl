@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+is_darwin=false
+if [[ "$(uname)" == "Darwin" ]];then
+  is_darwin=true
+fi
+
+function bufferpaste {
+  if is_darwin; then
+    pbpaste
+  else
+    wl-paste
+  fi
+}
+
+function buffercopy {
+  if is_darwin; then
+    pbcopy
+  else
+    wl-copy
+  fi
+}
+ bufferpaste| jq --raw-input '{"name":(.)}' | jq -sc|buffercopy
+

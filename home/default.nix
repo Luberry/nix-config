@@ -21,6 +21,10 @@
         viktorqvarfordt.vscode-pitch-black-theme
       ];
     };
+    tmux = {
+      enable = true;
+      mouse = true;
+    };
 
   };
   xresources = {
@@ -39,22 +43,6 @@
     "touchegg/touchegg.conf" = {
       enable = true;
       source = ./dotfiles/touchegg.conf;
-    };
-    "ulauncher/extensions.json" = {
-      enable = true;
-      source = ./dotfiles/ulauncher/extensions.json;
-    };
-    "ulauncher/settings.json" = {
-      enable = true;
-      source = ./dotfiles/ulauncher/settings.json;
-    };
-    "ulauncher/shortcuts.json" = {
-      enable = true;
-      source = ./dotfiles/ulauncher/shortcuts.json;
-    };
-    "ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db" = {
-      enable = true;
-      source = ./dotfiles/ulauncher/ext_preferences/com.github.rdnetto.ulauncher-sway.db;
     };
   };
   home = {

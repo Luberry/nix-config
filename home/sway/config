@@ -51,11 +51,9 @@ workspace 9 output primary
 ######Workspace Applications#####
 assign [class="^Slack$"] 4
 assign [class="^Firefox$"] 5
-assign [class="^URxvt$" instance="^bottomTerm$"] 7
-assign [class="^URxvt$" instance="^mainTerm$"] 3
 assign [class="^discord$"] 1
 assign [class="^Code$"] 6
-assign [class="^zoom$"] 9
+assign [class="^teams-for-linux$"] 9
 assign [class="^Plexamp$"] 1
 assign [class="^googlemessages-nativefier-11f104$"] 8
 

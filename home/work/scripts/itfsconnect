@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+pod=$(itfspod)
+kubectl -nimubit-apps port-forward $pod 10005:22 &
+kubectl -nimubit-apps port-forward $pod 9000:9000 &

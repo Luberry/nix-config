@@ -1,0 +1,52 @@
+#! /usr/bin/env bash
+
+SYNC_VENV=false
+CREATE_OR_MIGRATE_DB=false
+PROJECTS=("hmi" "dlpc-controller")
+
+# get script input
+while getopts ":sdp:" option; do
+  case $option in
+    s)
+      SYNC_VENV=true;;
+    d)
+      CREATE_OR_MIGRATE_DB=true;;
+    p)
+      PROJECTS=(${OPTARG});;
+      *)
+        echo "Invalid option ${option}";;
+    esac
+  done
+
+# create/migrate db
+cd projects
+if [[ "$CREATE_OR_MIGRATE_DB" = true ]]
+then
+  cd hmi
+  make migrate_or_create_db
+  cd ..
+fi
+
+
+if $USE_TMUX; then
+  tmux new-session -d -s dlpc >/dev/null
+fi
+
+# run each service in a new terminal or in a tmux session
+for s in ${PROJECTS[@]}; do
+  tmux new-window -t dlpc -n $s
+  if $SYNC_VENV; then
+    tmux send-keys -t dlpc "cd ${s}; sh run_server.sh true" Enter
+  else
+    tmux send-keys -t dlpc "cd ${s}; sh run_server.sh" Enter
+  fi
+  if [[ $s = "hmi" ]]
+  then
+    # verify hmi is up before other services for config manager
+    while ! nc -zv 127.0.0.1 8888
+    do
+      sleep 40
+    done
+    echo "hmi is up"
+  fi
+done

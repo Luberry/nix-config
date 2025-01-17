@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+if [ -z $1 ]; then
+	cat ~/.config/itfspod
+else
+	echo $1>~/.config/itfspod
+fi

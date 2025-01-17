@@ -1,0 +1,39 @@
+#! /usr/bin/env bash
+
+src=$(git branch --show-current)
+tgt=master
+title=""
+message=""
+labels=""
+wip=""
+ticket=""
+title=""
+
+while getopts ":t:wj:m:l:h:" option; do
+	case $option in
+		t)
+			tgt=${OPTARG};;
+    h)
+      title=${OPTARG};;
+		j)
+			
+			ticket=${OPTARG};;
+		m)
+			message=${OPTARG};;
+		l)
+			labels=labels + "-l ${OPTARG} ";;
+		w)
+			wip="--wip";;
+	esac
+done
+
+if [[ -z "${message}" ]]; then
+	message="https://imubit.atlassian.net/browse/${ticket}" 
+fi
+
+if [[ -z "${title}" ]]; then
+  title="${ticket}: Merge ${src}"
+fi
+
+
+glab mr create --source-branch $src --title "${title}" --description "${message}" --target-branch $tgt $labels $wip 

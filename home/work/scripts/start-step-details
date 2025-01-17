@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+docker run --name "step-details-db" -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+cd ~/monitoring-console-service/
+make migrations-up ENVIRONMENT=test

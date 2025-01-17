@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+sed_cmd=sed
+if [[ "$(uname)" == "Darwin" ]];then
+  sed_cmd=gsed
+fi
+cwd=$(pwd)
+cd ~/dlpc/projects/dlpc-controller
+file=$(poetry run sh -c 'echo "$VIRTUAL_ENV/lib/python3.11/site-packages/yoyo/backends.py"')
+poetry run ${sed_cmd} -i 's/socket\.getfqdn()/"localhost"/g' $file
+make db
+
+docker exec -it dlpc_db_container psql -c "create database monitoring_console_service"
+cd ~/monitoring-console-service
+DATABASE_URI=postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/monitoring_console_service make migrations-up
+cd $cwd

@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+cwd=$(pwd)
+sessions=$(tmux list-sessions 2>&1)
+if [ ! -z "$(echo $sessions | grep 'no server')" ] || [ -z "$(echo $sessions|grep dlpc)" ];then
+  cd ~/dlpc && ~/.local/bin/run-dlpc $@ && cd $cwd
+fi
+tmux a -t dlpc 

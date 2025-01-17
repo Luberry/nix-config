@@ -63,6 +63,12 @@
     wev
     wlprop
     libnotify
+    k9s
+    docker-compose
+    adwaita-icon-theme
+    glab
+    gh
+    jq
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.

@@ -1,4 +1,3 @@
-
 export NPM_REGISTRY_URL="https://nexus.internal-prod.imubit.com/repository/npm-group/"
 export PIP_INDEX_URL="https://nexus.internal-prod.imubit.com/repository/pypi-internal/simple"
 export PIP_TRUSTED_HOST="nexus.internal-prod.imubit.com"
