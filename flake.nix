@@ -19,7 +19,7 @@
       repo = "i3blocks-contrib";
       flake = false;
     };
-    fix-python.url="github:GuillaumeDesforges/fix-python";
+    fix-python.url = "github:GuillaumeDesforges/fix-python";
   };
 
   outputs =

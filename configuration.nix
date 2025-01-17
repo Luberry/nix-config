@@ -74,6 +74,7 @@
     cmake
     macchina
     freerdp3
+    htop
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.

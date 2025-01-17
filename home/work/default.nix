@@ -35,6 +35,8 @@
         poetryPkgs.poetry
         postgresql.dev
         inputs.fix-python.packages.${system}.default
+        openssl.bin
+        openssl.dev
       ];
     file = {
       ".zshrc-extra.zsh" = {
