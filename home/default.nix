@@ -63,6 +63,9 @@
       ".oh-my-zsh-custom/themes/agnoster-newline.zsh-theme" = {
         source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
       };
+      ".local/share/warp-terminal/themes/solarized_black.yaml" = {
+        source= ./dotfiles/warp/themes/solarized_black.yaml;
+      };
     };
   };
   fonts = {

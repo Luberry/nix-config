@@ -25,7 +25,6 @@ exec --no-startup-id swaybg -m fill -i ~/.config/sway/wallpaper.jpg
 #exec_always --no-startup-id ~/.config/sway/.Xmodmap
 exec_always --no-startup-id xrdb ~/.Xresources  
 #load urxvtd on start
-exec --no-startup-id urxvtd
 exec --no-startup-id touchegg
 exec --no-startup-id ulauncher --hide-window
 exec slack
@@ -135,9 +134,7 @@ bindsym $mod+Shift+f exec env firefox
 bindsym XF86Calculator exec speedcrunch
 
 
-bindsym $mod+Mod1+Return exec urxvtc -name mainTerm
-bindsym $mod+Return exec urxvtc
-bindsym $mod+Shift+Return exec urxvtc -name bottomTerm
+bindsym $mod+Return exec warp-terminal
 
 # Pulse Audio controls
 

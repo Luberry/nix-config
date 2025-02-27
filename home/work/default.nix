@@ -37,6 +37,8 @@
         inputs.fix-python.packages.${system}.default
         openssl.bin
         openssl.dev
+        awscli
+        remmina
       ];
     file = {
       ".zshrc-extra.zsh" = {

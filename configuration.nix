@@ -9,6 +9,9 @@
   ...
 }:
 
+let
+  gcloud = pkgs.google-cloud-sdk.withExtraComponents [ pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin ];
+in
 {
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -36,7 +39,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  
   environment.systemPackages = with pkgs; [
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -75,6 +78,11 @@
     macchina
     freerdp3
     htop
+    wdisplays
+    warp-terminal
+    kubectx
+    kubectl
+    gcloud
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.
