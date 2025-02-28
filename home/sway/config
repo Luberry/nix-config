@@ -28,6 +28,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id touchegg
 exec --no-startup-id ulauncher --hide-window
 exec slack
+exec --no-startup-id shikane -c ~/shikane/config.toml
 
 ######End AutoRuns######
 
@@ -253,8 +254,7 @@ bindsym $mod+Shift+Ctrl+0 move container to workspace 20
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit

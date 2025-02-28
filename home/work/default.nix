@@ -74,6 +74,9 @@
       ".local/bin/fix-poetry" = {
         source = ./scripts/fix-poetry;
       };
+      "shikane/config.toml" = {
+        source = ../../devices/thinkbook/shikane.toml;
+      };
     };
   };
 

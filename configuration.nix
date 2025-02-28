@@ -83,6 +83,9 @@ in
     kubectx
     kubectl
     gcloud
+    shikane
+    wayland-utils
+    displaylink
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.

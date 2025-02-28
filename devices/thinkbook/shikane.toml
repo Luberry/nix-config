@@ -1,0 +1,11 @@
+[[profile]]
+name = "single"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+    [[profile.output]]
+    # search for a matching serial number and model by full text comparison
+    search = ["m=0x061F"]
+    enable = true
+    mode = "1920x1080@60"
+    position = "0,0"
+    scale = 1.0
+
