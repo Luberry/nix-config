@@ -86,6 +86,7 @@ in
     shikane
     wayland-utils
     displaylink
+    ncdu
   ];
   # Enable the gnome-keyring secrets vault.
   # Will be exposed through DBus to programs willing to store secrets.
@@ -164,7 +165,11 @@ in
   ];
   security.polkit.enable = true;
   services.touchegg.enable = true;
-  services.avahi.enable = true;
+services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+};
   virtualisation.docker.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
