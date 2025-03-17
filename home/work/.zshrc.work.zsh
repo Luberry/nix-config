@@ -106,5 +106,4 @@ alias as='aws sso login --profile'
 	export ITFS_HOSTNAME=127.0.0.1
 if [[ "$(uname)" != "Darwin" ]];then
   start_itfs
-  export ITFS_HOSTNAME=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' itfs)
 fi

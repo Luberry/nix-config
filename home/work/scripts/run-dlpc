@@ -2,7 +2,7 @@
 
 SYNC_VENV=false
 CREATE_OR_MIGRATE_DB=false
-PROJECTS=("hmi" "dlpc-controller")
+PROJECTS=("hmi" "dlpc-controller" "scheduler")
 
 # get script input
 while getopts ":sdp:" option; do
@@ -35,7 +35,9 @@ fi
 # run each service in a new terminal or in a tmux session
 for s in ${PROJECTS[@]}; do
   tmux new-window -t dlpc -n $s
-  if $SYNC_VENV; then
+  if [[ $s = "scheduler" ]];then
+    tmux send-keys -t dlpc "cd "dlpc-controller"; make scheduler" Enter
+  elif $SYNC_VENV; then
     tmux send-keys -t dlpc "cd ${s}; sh run_server.sh true" Enter
   else
     tmux send-keys -t dlpc "cd ${s}; sh run_server.sh" Enter
