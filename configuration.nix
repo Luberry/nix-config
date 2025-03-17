@@ -59,6 +59,8 @@ in
     iproute2
     plexamp
     nodejs_20
+    corepack
+    yarn
     swaybg
     pavucontrol
     alsa-utils
