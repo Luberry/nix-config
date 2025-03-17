@@ -123,8 +123,8 @@ bar {
 set $mod Mod4
 
 #lock
-bindsym $mod+l exec swaylock-effects --grace=60 -s fill -i ~/.config/sway/wallpaper.jpg
-bindsym $mod+ctrl+q exec swaylock-effects --grace=60 -s fill -i ~/.config/sway/wallpaper.jpg
+bindsym $mod+l exec swaylock -s fill -i ~/.config/sway/wallpaper.jpg
+bindsym $mod+ctrl+q exec swaylock --grace=60 -s fill -i ~/.config/sway/wallpaper.jpg
 
 #Screenshot
 bindsym $mod+Shift+p exec grim -g "$(slurp)" - |wl-copy
