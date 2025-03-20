@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
-    p81.url = "github:devusb/p81.nix";
+    p81.url = "github:Luberry/p81-nix";
     p81.inputs.nixpkgs.follows = "nixpkgs";
     sentinelone.url = "github:devusb/sentinelone.nix";
     nix-packages.url = "github:Luberry/nix-packages";

@@ -10,7 +10,9 @@
 }:
 
 let
-  gcloud = pkgs.google-cloud-sdk.withExtraComponents [ pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin ];
+  gcloud = pkgs.google-cloud-sdk.withExtraComponents [
+    pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+  ];
 in
 {
   nix.settings.experimental-features = "nix-command flakes";
@@ -39,7 +41,7 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
+
   environment.systemPackages = with pkgs; [
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -169,11 +171,11 @@ in
   ];
   security.polkit.enable = true;
   services.touchegg.enable = true;
-services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
-};
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   virtualisation.docker.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget

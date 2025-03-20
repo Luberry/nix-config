@@ -64,10 +64,10 @@
         source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
       };
       ".local/share/warp-terminal/themes/solarized_black.yaml" = {
-        source= ./dotfiles/warp/themes/solarized_black.yaml;
+        source = ./dotfiles/warp/themes/solarized_black.yaml;
       };
       ".local/bin/wakeup-display" = {
-        source=./scripts/wakeup-display;
+        source = ./scripts/wakeup-display;
       };
     };
   };
