@@ -2,8 +2,8 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     p81.url = "github:Luberry/p81-nix";
@@ -65,9 +65,11 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./configuration.nix
+            ./hosts/dkozicki-thinkbook/user.nix
+            ./hosts/dkozicki-thinkbook/packages.nix
+            ./hosts/dkozicki-thinkbook/network.nix
             ./devices/thinkbook/default.nix
             sops-nix.nixosModules.sops
-            ./hosts/dkozicki-thinkbook/packages.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -75,8 +77,43 @@
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.dkozicki.imports = [
+                  ./home/work/username.nix
                   ./home
                   ./home/work
+                  ./home/bluetooth.nix
+                ];
+              };
+
+            }
+          ];
+        };
+        dylan-framework = nixpkgs.lib.nixosSystem {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+            overlays = builtins.attrValues {
+              default = (import ./overlays { inherit inputs; });
+            };
+          };
+
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./hosts/dylan-framework/user.nix
+            ./hosts/dylan-framework/packages.nix
+            ./hosts/dylan-framework/network.nix
+            ./devices/framework-13-intel-11g/default.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.dylan.imports = [
+                  ./home/personal/username.nix
+                  ./home/personal
+                  ./home
                   ./home/bluetooth.nix
                 ];
               };
