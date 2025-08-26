@@ -4,7 +4,8 @@
   lib,
   inputs,
   ...
-}:{
+}:
+{
   users.users = {
     dkozicki = {
       initialPassword = "password";

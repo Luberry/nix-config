@@ -67,6 +67,7 @@
             ./configuration.nix
             ./hosts/dkozicki-thinkbook/user.nix
             ./hosts/dkozicki-thinkbook/packages.nix
+            ./hosts/dkozicki-thinkbook/network.nix
             ./devices/thinkbook/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
@@ -101,14 +102,17 @@
             ./configuration.nix
             ./hosts/dylan-framework/user.nix
             ./hosts/dylan-framework/packages.nix
+            ./hosts/dylan-framework/network.nix
             ./devices/framework-13-intel-11g/default.nix
+            home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.dkozicki.imports = [
+                users.dylan.imports = [
                   ./home/personal/username.nix
+                  ./home/personal
                   ./home
                   ./home/bluetooth.nix
                 ];

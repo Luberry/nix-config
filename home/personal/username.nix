@@ -6,5 +6,5 @@
   ...
 }:
 {
-    home.username="dylan"
+  home.username = "dylan";
 }
