@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -91,9 +92,15 @@
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
-            overlays = builtins.attrValues {
-              default = (import ./overlays { inherit inputs; });
-            };
+            overlays = [
+             ( final: _prev: {
+    unstable = import inputs.nixpkgs-unstable {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  })
+            ];
+            
           };
 
           system = "x86_64-linux";
@@ -103,6 +110,7 @@
             ./hosts/dylan-framework/user.nix
             ./hosts/dylan-framework/packages.nix
             ./hosts/dylan-framework/network.nix
+            ./hosts/dylan-framework/pam-mount.nix
             ./devices/framework-13-intel-11g/default.nix
             home-manager.nixosModules.home-manager
             {
@@ -115,6 +123,7 @@
                   ./home/personal
                   ./home
                   ./home/bluetooth.nix
+                  ./hosts/dylan-framework/shikane.nix
                 ];
               };
 

@@ -17,4 +17,10 @@
       extraConfig.gpg.format = "ssh";
     };
   };
+  home = {
+    packages = with pkgs; [
+      freecad-wayland
+    ];
+
+  };
 }

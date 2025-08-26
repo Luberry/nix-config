@@ -202,6 +202,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/e9b51731911566bbf7e4895475a87fe06961de0b.tar.gz"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1756125398,
+        "narHash": "sha256-XexyKZpf46cMiO5Vbj+dWSAXOnr285GHsMch8FBoHbc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3b9f00d7a7bf68acd4c4abb9d43695afb04e03a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1735554305,
@@ -326,6 +342,7 @@
         "i3blocks-contrib": "i3blocks-contrib",
         "nix-packages": "nix-packages",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "p81": "p81",
         "sentinelone": "sentinelone",
         "sops-nix": "sops-nix",

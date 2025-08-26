@@ -82,7 +82,7 @@ in
     freerdp3
     htop
     wdisplays
-    warp-terminal
+    unstable.warp-terminal
     kubectx
     kubectl
     gcloud

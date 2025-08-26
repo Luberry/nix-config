@@ -13,27 +13,32 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  boot = {
+    initrd.availableKernelModules = [
+      "aesni_intel"
+      "cryptd"
+      "xhci_pci"
+      "thunderbolt"
+      "nvme"
+      "usb_storage"
+      "sd_mod"
+      "sdhci_pci"
+    ];
+    kernelModules = [
+      "kvm-intel"
+    ];
+    extraModulePackages = [ config.boot.kernelPackages.evdi ];
 
-  boot.initrd.availableKernelModules = [
-    "aesni_intel"
-    "cryptd"
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "sdhci_pci"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
+    initrd = {
+      kernelModules = [
+      ];
+      luks.devices."root".device = "/dev/disk/by-uuid/22d3a9ab-34c4-40e2-9e1c-1e7e3eab13e3";
+    };
+  };
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/bbd61eb8-2b28-47f0-956c-917c5b419ce7";
     fsType = "ext4";
   };
-
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/22d3a9ab-34c4-40e2-9e1c-1e7e3eab13e3";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/081D-0FBD";
@@ -56,4 +61,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
 }
