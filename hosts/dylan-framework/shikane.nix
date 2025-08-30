@@ -1,12 +1,12 @@
 {
-    config,
-    pkgs,
-    lib,
-    inputs,
-    ...
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
 }:
 {
-    
+
   xdg.configFile = {
     "shikane/config.toml" = {
       enable = true;

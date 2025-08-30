@@ -16,11 +16,13 @@
     };
     vscode = {
       enable = true;
-      profiles.default.extensions = with pkgs.vscode-extensions; [
-        asvetliakov.vscode-neovim
-        viktorqvarfordt.vscode-pitch-black-theme
-        bbenoist.nix
-      ];
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          asvetliakov.vscode-neovim
+          viktorqvarfordt.vscode-pitch-black-theme
+          bbenoist.nix
+        ];
+      };
     };
     tmux = {
       enable = true;
@@ -77,7 +79,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    extraOptions=["--unsupported-gpu"];
+    extraOptions = [ "--unsupported-gpu" ];
     config = null;
     extraConfig = lib.fileContents ./sway/config;
     package = pkgs.unstable.sway;

@@ -93,14 +93,14 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
             overlays = [
-             ( final: _prev: {
-    unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
-      config.allowUnfree = true;
-    };
-  })
+              (final: _prev: {
+                unstable = import inputs.nixpkgs-unstable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
             ];
-            
+
           };
 
           system = "x86_64-linux";

@@ -6,7 +6,7 @@
   ...
 }:
 {
-environment.systemPackages = with pkgs;[
-  wlroots_0_19
-];
+  environment.systemPackages = with pkgs; [
+    wlroots_0_19
+  ];
 }
