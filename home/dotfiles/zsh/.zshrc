@@ -5,6 +5,7 @@ if [[ "$(uname)"=="Darwin" ]]; then
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 fi
 export NIX_CFG_PATH=$HOME/nix-config
+source ~/.local/state/nix/profiles/home-manager/home-path/etc/profile.d/hm-session-vars.sh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,

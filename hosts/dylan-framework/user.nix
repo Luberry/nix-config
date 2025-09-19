@@ -21,6 +21,8 @@
         "docker"
         "plugdev"
         "video"
+        "scanner"
+        "lp"
       ];
       shell = pkgs.zsh;
     };

@@ -17,10 +17,35 @@
     vscode = {
       enable = true;
       profiles.default = {
+        keybindings = [
+          {
+            key = "ctrl+alt+v";
+            command = "workbench.action.terminal.paste";
+            when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+          }
+          {
+            key = "ctrl+shift+v";
+            command = "-workbench.action.terminal.paste";
+            when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+          }
+          {
+            key = "ctrl+alt+v";
+            command = "-workbench.action.editorDictation.start";
+            when = "hasSpeechProvider && !editorReadonly && !speechToTextInProgress";
+          }
+        ];
+        userSettings = {
+          "extensions.experimental.affinity" = {
+            "asvetliakov.vscode-neovim" = 1;
+          };
+          "workbench.colorTheme" = "Pitch Black";
+        };
         extensions = with pkgs.vscode-extensions; [
           asvetliakov.vscode-neovim
           viktorqvarfordt.vscode-pitch-black-theme
           bbenoist.nix
+          ms-vscode-remote.remote-containers
+          ms-vscode.cmake-tools
         ];
       };
     };

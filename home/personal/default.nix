@@ -22,6 +22,5 @@
       freecad-wayland
       pico-sdk
     ];
-
   };
 }
