@@ -21,6 +21,7 @@
     packages = with pkgs; [
       freecad-wayland
       pico-sdk
+      gscan2pdf
     ];
   };
 }
