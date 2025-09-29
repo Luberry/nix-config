@@ -22,7 +22,6 @@
       freecad-wayland
       pico-sdk
       gscan2pdf
-      bambu-studio
     ];
   };
 }

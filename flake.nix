@@ -99,6 +99,7 @@
                   config.allowUnfree = true;
                 };
               })
+              (import ./overlays/bambu.nix)
             ];
 
           };
