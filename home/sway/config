@@ -28,7 +28,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id touchegg
 exec --no-startup-id ulauncher --hide-window
 exec slack
-exec --no-startup-id shikane -c ~/shikane/config.toml
+exec_always --no-startup-id shikane
 
 ######End AutoRuns######
 
