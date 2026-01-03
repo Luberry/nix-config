@@ -23,6 +23,10 @@
       pico-sdk
       gscan2pdf
       speedcrunch
+      lutris-free
+      wineWowPackages.stagingFull
+      winetricks
+      uget
     ];
   };
 }

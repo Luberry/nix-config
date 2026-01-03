@@ -14,4 +14,5 @@
     wlroots_0_19
     bambu-studio-appimage
   ];
+  programs.steam.enable=true;
 }
