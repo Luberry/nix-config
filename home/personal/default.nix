@@ -27,6 +27,8 @@
       wineWowPackages.stagingFull
       winetricks
       uget
+      prismlauncher
+      ydotool
     ];
   };
 }

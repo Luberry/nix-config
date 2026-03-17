@@ -9,6 +9,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  programs = {
+    coolercontrol.enable = true;
+  };
   services = {
     fprintd = {
       enable = true;

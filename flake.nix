@@ -20,6 +20,12 @@
       repo = "i3blocks-contrib";
       flake = false;
     };
+    solaar = {
+      url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz"; # For latest stable version
+      #url = "https://flakehub.com/f/Svenum/Solaar-Flake/0.1.7.tar.gz"; # uncomment line for solaar version 1.1.19
+      #url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; 
     fix-python.url = "github:GuillaumeDesforges/fix-python";
   };
 
@@ -32,6 +38,7 @@
       systems,
       treefmt-nix,
       flake-parts,
+      solaar,
       ...
     }:
     let
@@ -113,6 +120,7 @@
             ./hosts/dylan-framework/network.nix
             ./hosts/dylan-framework/pam-mount.nix
             ./devices/framework-13-intel-11g/default.nix
+            solaar.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {
