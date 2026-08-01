@@ -2,12 +2,12 @@ self: super: {
   bambu-studio-appimage = super.appimageTools.wrapType2 rec {
     name = "BambuStudio";
     pname = "bambu-studio";
-    version = "02.02.02.56";
-    ubuntu_version = "24.04_PR-8184";
+    version = "02.05.01.52";
+    ubuntu_version = "24.04";
 
     src = super.fetchurl {
-      url = "https://github.com/bambulab/BambuStudio/releases/download/v${version}/Bambu_Studio_ubuntu-${ubuntu_version}.AppImage";
-      sha256 = "sha256-ziipEMz58lG/+uxubCd53c6BjJ9W3doJ9/Z8VJp+Za4=";
+      url="https://github.com/bambulab/BambuStudio/releases/download/v02.05.01.52/Bambu_Studio_ubuntu-24.04_V02.05.01.52.AppImage";
+      sha256 = "sha256-W6creYpoeLDOkQZgsVSWLY4jK8GiaQi3NS7thtEJqCs=";
     };
 
     profile = ''

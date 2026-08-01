@@ -13,6 +13,9 @@ input "type:touchpad" {
 
 #######AutoRuns########
 #notification daemon
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-keyring-daemon --start --components=secrets,ssh,pkcs11
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK DBUS_SESSION_BUS_ADDRESS
 exec --no-startup-id dunst
 exec --no-startup-id xset r 66
 #Bluetooth Manger

@@ -110,6 +110,7 @@
                 };
               })
               (import ./overlays/bambu.nix)
+              (import ./overlays/caprine-bankjaneo.nix)
             ];
 
           };

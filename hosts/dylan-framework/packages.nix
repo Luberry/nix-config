@@ -9,10 +9,14 @@
   nixpkgs.overlays = [
     # Add your overlay here
     (import ../../overlays/bambu.nix)
+    (import ../../overlays/racecapture.nix)
   ];
   environment.systemPackages = with pkgs; [
     wlroots_0_19
     bambu-studio-appimage
+    spacenavd
+    racecapture
+    go
   ];
   programs.steam.enable=true;
   sops = {
@@ -38,6 +42,7 @@
     portForwarding.enable = true;
     dns.enable = true;
   };
+  services.udev.packages=[pkgs.platformio];
 
 
 }

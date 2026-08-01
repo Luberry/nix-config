@@ -29,6 +29,23 @@
       uget
       prismlauncher
       ydotool
+      lsb-release
+      mesa-demos
+      wget
+      p7zip
+      remmina
+      cabextract
+      samba4Full
+      bc
+      mokutil
+      gettext
+      android-tools
+      vlc
+      scrcpy
+      platformio
+      go
+      caprine
+
     ];
   };
 }
