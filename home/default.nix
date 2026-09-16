@@ -39,6 +39,8 @@
             "asvetliakov.vscode-neovim" = 1;
           };
           "workbench.colorTheme" = "Pitch Black";
+          "platformio-ide.useBuiltinPython" = false;
+          "platformio-ide.customPATH" = "/etc/profiles/per-user/dylan/bin/python3";
         };
         extensions = with pkgs.vscode-extensions; [
           asvetliakov.vscode-neovim

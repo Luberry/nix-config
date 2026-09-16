@@ -102,6 +102,7 @@
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
+
             overlays = [
               (final: _prev: {
                 unstable = import inputs.nixpkgs-unstable {
@@ -109,7 +110,6 @@
                   config.allowUnfree = true;
                 };
               })
-              (import ./overlays/bambu.nix)
               (import ./overlays/caprine-bankjaneo.nix)
             ];
 

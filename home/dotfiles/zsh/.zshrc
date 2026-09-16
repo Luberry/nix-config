@@ -158,9 +158,22 @@ alias gss='git stash'
 alias parsejwt='jq -R '"'"'split(".") | .[0],.[1] | @base64d | fromjson'"'"
 alias gdiff='git diff'
 alias glcf='git diff-tree --no-commit-id --name-only HEAD -r'
-alias rebuild='nixos-rebuild switch --use-remote-sudo --flake ${NIX_CFG_PATH}#$(hostname)'
-alias rebuild-boot='nixos-rebuild boot --use-remote-sudo --flake ${NIX_CFG_PATH}#$(hostname)'
+alias rebuild='nixos-rebuild switch --use-remote-sudo --flake ${NIX_CFG_PATH}#$(hostname) $@'
+alias rebuild-boot='nixos-rebuild boot --use-remote-sudo --flake ${NIX_CFG_PATH}#$(hostname) $@'
 alias vim=nvim
 export LM_MC_DIR=~/.local/share/PrismLauncher/instances/1.21.11-litematica
 export MC_DIR=~/.local/share/PrismLauncher/instances/1.21.11
+export PLATFORMIO_PENV_DIR="$HOME/.platformio/penv"
+platformio-shell() {
+  nix-shell -p "buildFHSUserEnv { 
+    name = 'platformio-penv'; 
+    targetPkgs = pkgs: with pkgs; [ 
+      zlib 
+      glibc 
+      git 
+      python3 
+      udev
+    ]; 
+  }" --run "bash --rcfile <(echo 'source ~/.platformio/penv/bin/activate')"
+}
 

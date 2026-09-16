@@ -32,11 +32,11 @@
 
 stdenv.mkDerivation rec {
   pname = "racecapture";
-  version = "2.18.0";
+  version = "2.19.0";
 
   src = fetchurl {
     url = "https://autosportlabs-software.s3.us-west-2.amazonaws.com/racecapture_linux_x86_64_${version}.deb";
-    sha256 = "sha256-YEqUbSHh1gCVZnwag8nDEyECw3L39B2gRgHxdfC9E68="; 
+    sha256 = "sha256-OmNATAzy47eXrODzpq9Cpzpj1+Hvuyg63cczr8ifPVw="; 
   };
 
   nativeBuildInputs = [

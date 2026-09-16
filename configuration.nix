@@ -16,7 +16,6 @@ let
 in
 {
   nix.settings.experimental-features = "nix-command flakes";
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,7 +39,6 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
   environment.systemPackages = with pkgs; [
     grim # screenshot functionality
     slurp # screenshot functionality
@@ -59,7 +57,7 @@ in
     playerctl
     iproute2
     plexamp
-    nodejs_20
+    nodejs_22
     corepack
     yarn
     swaybg
@@ -79,7 +77,7 @@ in
     gcc
     cmake
     macchina
-    freerdp3
+    freerdp
     htop
     wdisplays
     unstable.warp-terminal
