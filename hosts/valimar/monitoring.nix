@@ -52,11 +52,6 @@ in
         static_configs = [ { targets = [ "127.0.0.1:9101" ]; } ];
       }
       {
-        job_name = "plex";
-        scrape_interval = "10s";
-        static_configs = [ { targets = [ "127.0.0.1:9594" ]; } ];
-      }
-      {
         job_name = "caddy";
         static_configs = [ { targets = [ "127.0.0.1:2019" ]; } ];
       }

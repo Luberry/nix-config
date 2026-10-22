@@ -1,4 +1,4 @@
-# Plex, native module, plus its prometheus exporter.
+# Plex, native module. (pkgs/plex-exporter.nix is packaged but not enabled yet.)
 #
 # The database stays on the storage pool in the old container's config dir, so
 # it survives a reinstall. Paths Plex has stored from the container days
@@ -46,25 +46,6 @@ in
         "${media}:/data"
         "/var/cache/plex-transcode:/transcode"
       ];
-    };
-  };
-
-  # PLEX_TOKEN=..., kept out of the command line.
-  sops.secrets.plex-exporter-env.sopsFile = ../../secrets/valimar.yaml;
-  systemd.services.plex-exporter = {
-    description = "Prometheus exporter for Plex";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "plex.service" ];
-    wants = [ "plex.service" ];
-    serviceConfig = {
-      # It exits if plex isn't up yet, so keep retrying.
-      ExecStart = "${
-        lib.getExe (pkgs.callPackage ../../pkgs/plex-exporter.nix { })
-      } --plex-server http://127.0.0.1:32400 --listen-address 127.0.0.1:9594";
-      EnvironmentFile = config.sops.secrets.plex-exporter-env.path;
-      DynamicUser = true;
-      Restart = "always";
-      RestartSec = 10;
     };
   };
 }
