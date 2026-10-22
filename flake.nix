@@ -123,6 +123,8 @@
             ./hosts/valimar/zfs.nix
             ./hosts/valimar/samba.nix
             ./hosts/valimar/openhab.nix
+            ./hosts/valimar/mosquitto.nix
+            ./hosts/valimar/deconz.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
