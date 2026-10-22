@@ -133,6 +133,7 @@
             ./hosts/valimar/cloudflared.nix
             ./hosts/valimar/deluge.nix
             ./hosts/valimar/minecraft.nix
+            ./hosts/valimar/immich.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager

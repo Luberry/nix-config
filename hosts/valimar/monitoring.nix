@@ -1,7 +1,8 @@
 # Monitoring, converted from the old dockprom compose stack:
 # prometheus + exporters + pushgateway, grafana with dockprom's dashboards
 # (read from storage), and caddy in front of grafana (valimar.local) and the
-# <service>.home.arpa sites (openhab, plex, jellyfin, deluge, flexget, pihole).
+# <service>.home.arpa sites (openhab, plex, jellyfin, deluge, flexget, immich,
+# pihole).
 #
 # Prometheus and the exporters only listen on localhost; grafana is the way in.
 # Job names match dockprom's so its dashboards keep working.
@@ -194,6 +195,10 @@ in
       tls internal
       redir / /flexget/
       reverse_proxy 127.0.0.1:5050
+    '';
+    virtualHosts."immich.home.arpa".extraConfig = ''
+      tls internal
+      reverse_proxy 127.0.0.1:2283
     '';
     virtualHosts."pihole.home.arpa".extraConfig = ''
       tls internal
