@@ -69,6 +69,7 @@
           bbenoist.nix
           ms-vscode-remote.remote-containers
           ms-vscode.cmake-tools
+          anthropic.claude-code
         ];
       };
     };

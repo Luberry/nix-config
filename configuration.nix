@@ -28,6 +28,15 @@ in
     earlySetup = true;
     useXkbConfig = true;
   };
+  # Remap caps to a real backspace at the evdev level so apps that check the
+  # physical key (e.g. Chromium/Electron on Wayland) still autorepeat it.
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings.main.capslock = "backspace";
+    };
+  };
 
   # Pick only one of the below networking options.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
