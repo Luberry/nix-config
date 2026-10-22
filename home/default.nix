@@ -7,10 +7,9 @@
 }:
 
 {
+  imports = [ ./shell.nix ];
   programs = {
     home-manager.enable = true;
-    git.enable = true;
-    zsh.oh-my-zsh.custom = "${config.home.homeDirectory}/.oh-my-zsh-custom";
     waybar = {
       enable = true;
     };
@@ -84,10 +83,6 @@
     properties = null;
   };
   xdg.configFile = {
-    "nvim/init.vim" = {
-      enable = true;
-      source = ./dotfiles/init.vim;
-    };
     "sway/wallpaper.jpg" = {
       enable = true;
       source = ./sway/wallpaper.jpg;
@@ -101,18 +96,9 @@
     stateVersion = "24.11";
     homeDirectory =
       if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
     file = {
       ".Xresources" = {
         source = ./sway/Xresources;
-      };
-      ".zshrc" = {
-        source = ./dotfiles/zsh/.zshrc;
-      };
-      ".oh-my-zsh-custom/themes/agnoster-newline.zsh-theme" = {
-        source = ./dotfiles/zsh/agnoster-newline.zsh-theme;
       };
       ".local/share/warp-terminal/themes/solarized_black.yaml" = {
         source = ./dotfiles/warp/themes/solarized_black.yaml;

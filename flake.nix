@@ -7,9 +7,6 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
-    p81.url = "github:Luberry/p81-nix";
-    p81.inputs.nixpkgs.follows = "nixpkgs";
-    sentinelone.url = "github:devusb/sentinelone.nix";
     nix-packages.url = "github:Luberry/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -63,41 +60,6 @@
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
       # allow for extra overlays to be added later
       nixosConfigurations = {
-        dkozicki-thinkbook = nixpkgs.lib.nixosSystem {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-            overlays = builtins.attrValues {
-              default = (import ./overlays { inherit inputs; });
-            };
-          };
-
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./configuration.nix
-            ./hosts/dkozicki-thinkbook/user.nix
-            ./hosts/dkozicki-thinkbook/packages.nix
-            ./hosts/dkozicki-thinkbook/network.nix
-            ./devices/thinkbook/default.nix
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.dkozicki.imports = [
-                  ./home/work/username.nix
-                  ./home
-                  ./home/work
-                  ./home/bluetooth.nix
-                ];
-              };
-
-            }
-          ];
-        };
         dylan-framework = nixpkgs.lib.nixosSystem {
           pkgs = import nixpkgs {
             system = "x86_64-linux";
@@ -144,6 +106,40 @@
 
             }
           ];
+        };
+        valimar = nixpkgs.lib.nixosSystem {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/valimar/configuration.nix
+            ./hosts/valimar/user.nix
+            ./hosts/valimar/network.nix
+            ./hosts/valimar/clevis.nix
+            ./hosts/valimar/zfs.nix
+            ./devices/valimar/default.nix
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.dylan.imports = [
+                  ./home/personal/username.nix
+                  ./home/shell.nix
+                  ./hosts/valimar/home.nix
+                ];
+              };
+            }
+          ];
+        };
+        valimar-installer = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/valimar/installer.nix ];
         };
       };
     };

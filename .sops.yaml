@@ -1,11 +1,17 @@
 keys:
   - &admin_dkozicki age196z6c523tvey68ke9xye4j0zytz38cgxrwny0eexva9yn6qhsy7qddsgl7
-  - &dkozicki-thinkbook age1u67agflejq2me2a6utfcnhrgjg8lfp74djlhr8ygdgpwh6uthvlquhq7uv
-  - &dylan-framework age17xftmv6vfz6xlhnh6z65csfve9044hurde9sd3qju9swveykk38s22k5zq  
+  - &dylan-framework age17xftmv6vfz6xlhnh6z65csfve9044hurde9sd3qju9swveykk38s22k5zq
+  - &valimar age15jsew37uyav4ljwymtt0t2l9pvfmrzzm36tskydgscfcm2r3mexsq2xldf
 creation_rules:
+  # sops uses the first matching rule, so host-specific files go above the catch-all.
+  - path_regex: secrets/valimar\.yaml$
+    key_groups:
+      - age:
+        - *admin_dkozicki
+        - *dylan-framework
+        - *valimar
   - path_regex: secrets.*$
     key_groups:
       - age:
         - *admin_dkozicki
-        - *dkozicki-thinkbook
         - *dylan-framework

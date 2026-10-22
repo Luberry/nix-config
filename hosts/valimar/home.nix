@@ -2,9 +2,8 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }:
 {
-  home.username = "dkozicki";
+  home.stateVersion = "26.05";
 }

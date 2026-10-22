@@ -95,7 +95,6 @@ in
     gcloud
     shikane
     wayland-utils
-    displaylink
     ncdu
     yq
     swaylock-effects

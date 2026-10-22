@@ -20,6 +20,7 @@
     racecapture
     go
     qemu
+    displaylink
   ];
   programs.steam.enable = true;
   sops = {
