@@ -138,7 +138,10 @@ set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 "set matchpairs+=<:>             " Match, to be used with %
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+" 'pastetoggle' was removed in Neovim 0.10 (bracketed paste makes it mostly
+" unnecessary), so keep F12 as a manual paste-mode toggle
+nnoremap <F12> :set invpaste paste?<CR>
+inoremap <F12> <C-o>:set invpaste<CR>
 "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 " Remove trailing whitespaces and ^M chars
 " To disable the stripping of whitespace, add the following to your
