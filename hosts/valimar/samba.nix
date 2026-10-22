@@ -45,8 +45,11 @@
       };
     };
   };
-  users.groups.share = { };
+  # Pinned to what NixOS first allocated, so files on the pool keep their owner
+  # across reinstalls, and containers can use them as PUID/PGID.
+  users.groups.share.gid = 994;
   users.users.smbguest = {
+    uid = 995;
     isSystemUser = true;
     group = "share";
   };

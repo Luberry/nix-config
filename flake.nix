@@ -131,6 +131,7 @@
             ./hosts/valimar/plex.nix
             ./hosts/valimar/jellyfin.nix
             ./hosts/valimar/cloudflared.nix
+            ./hosts/valimar/deluge.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
