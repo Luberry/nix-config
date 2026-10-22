@@ -1,7 +1,7 @@
 # Monitoring, converted from the old dockprom compose stack:
 # prometheus + exporters + pushgateway, grafana with dockprom's dashboards
-# (read from storage), and caddy in front of grafana (valimar.local), openHAB
-# (openhab.home.arpa) and pi-hole (pihole.home.arpa).
+# (read from storage), and caddy in front of grafana (valimar.local) and the
+# <service>.home.arpa sites (openhab, plex, jellyfin, pihole).
 #
 # Prometheus and the exporters only listen on localhost; grafana is the way in.
 # Job names match dockprom's so its dashboards keep working.
@@ -50,6 +50,11 @@ in
         job_name = "dfpoller";
         scrape_interval = "5s";
         static_configs = [ { targets = [ "127.0.0.1:9101" ]; } ];
+      }
+      {
+        job_name = "plex";
+        scrape_interval = "10s";
+        static_configs = [ { targets = [ "127.0.0.1:9594" ]; } ];
       }
       {
         job_name = "caddy";
@@ -176,6 +181,15 @@ in
         header_down +Access-Control-Allow-Headers Authorization,Accept,Origin,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
         header_down +Access-Control-Allow-Methods GET,POST,OPTIONS,PUT,DELETE,PATCH
       }
+    '';
+    virtualHosts."plex.home.arpa".extraConfig = ''
+      tls internal
+      redir / /web/
+      reverse_proxy 127.0.0.1:32400
+    '';
+    virtualHosts."jellyfin.home.arpa".extraConfig = ''
+      tls internal
+      reverse_proxy 127.0.0.1:8096
     '';
     virtualHosts."pihole.home.arpa".extraConfig = ''
       tls internal

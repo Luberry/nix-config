@@ -44,7 +44,9 @@
           name = "home.arpa";
           local = true;
         };
-        hosts = [ "10.8.2.226 valimar.home.arpa openhab.home.arpa pihole.home.arpa" ];
+        hosts = [
+          "10.8.2.226 valimar.home.arpa openhab.home.arpa pihole.home.arpa plex.home.arpa jellyfin.home.arpa"
+        ];
       };
     };
   };

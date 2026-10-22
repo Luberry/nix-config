@@ -128,6 +128,9 @@
             ./hosts/valimar/ups.nix
             ./hosts/valimar/monitoring.nix
             ./hosts/valimar/pihole.nix
+            ./hosts/valimar/plex.nix
+            ./hosts/valimar/jellyfin.nix
+            ./hosts/valimar/cloudflared.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
