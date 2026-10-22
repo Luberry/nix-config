@@ -121,6 +121,7 @@
             ./hosts/valimar/network.nix
             ./hosts/valimar/clevis.nix
             ./hosts/valimar/zfs.nix
+            ./hosts/valimar/samba.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
