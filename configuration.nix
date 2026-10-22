@@ -123,7 +123,7 @@ in
       PasswordAuthentication = false;
     };
   };
-
+  services.displayManager.defaultSession = "sway";
   programs = {
     firefox.enable = true;
     # enable sway window manager
@@ -137,7 +137,7 @@ in
       ohMyZsh.enable = true;
     };
   };
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   security.pam.services.sudo.fprintAuth = true;
   security.pam.services.gdm.fprintAuth = true;
 
@@ -154,7 +154,7 @@ in
     openFirewall = true;
   };
   virtualisation.docker.enable = true;
-  # List packages installed in system profile. To search, run:
+  # List packages installed in  profile. To search, run:
   # $ nix search wget
   # environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.

@@ -1,0 +1,67 @@
+{
+    "bridge_speed": [
+        "35",
+        "nil"
+    ],
+    "default_acceleration": "3000",
+    "from": "User",
+    "gap_infill_speed": [
+        "35",
+        "nil"
+    ],
+    "inherits": "0.20mm Standard @BBL X1C",
+    "initial_layer_infill_speed": [
+        "35",
+        "nil"
+    ],
+    "initial_layer_speed": [
+        "35",
+        "nil"
+    ],
+    "inner_wall_speed": [
+        "35",
+        "nil"
+    ],
+    "internal_solid_infill_speed": [
+        "35",
+        "nil"
+    ],
+    "name": "ASA Aero 0.20mm X1C",
+    "outer_wall_acceleration": [
+        "10000",
+        "nil"
+    ],
+    "outer_wall_speed": [
+        "35",
+        "nil"
+    ],
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "ASA Aero 0.20mm X1C",
+    "skeleton_infill_density": "3%",
+    "skin_infill_density": "3%",
+    "sparse_infill_density": "4%",
+    "sparse_infill_pattern": "gyroid",
+    "sparse_infill_speed": [
+        "35",
+        "nil"
+    ],
+    "top_shell_layers": "2",
+    "top_shell_thickness": "0",
+    "top_surface_acceleration": [
+        "10000",
+        "nil"
+    ],
+    "top_surface_speed": [
+        "35",
+        "nil"
+    ],
+    "travel_acceleration": "6000",
+    "version": "2.5.0.14"
+}

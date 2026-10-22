@@ -1,33 +1,34 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, autoPatchelfHook
-, makeWrapper
-, makeDesktopItem
-, copyDesktopItems
-# Runtime dependencies
-, alsa-lib
-, dbus
-, fontconfig
-, freetype
-, glib
-, libGL
-, libX11
-, libXrender
-, libXi
-, libXcursor
-, libXext
-, libXfixes
-, libXrandr
-, libXcomposite
-, libXdamage
-, libXtst
-, libxkbcommon
-, nspr
-, nss
-, systemd
-, zlib
+{
+  lib,
+  stdenv,
+  fetchurl,
+  dpkg,
+  autoPatchelfHook,
+  makeWrapper,
+  makeDesktopItem,
+  copyDesktopItems,
+  # Runtime dependencies
+  alsa-lib,
+  dbus,
+  fontconfig,
+  freetype,
+  glib,
+  libGL,
+  libX11,
+  libXrender,
+  libXi,
+  libXcursor,
+  libXext,
+  libXfixes,
+  libXrandr,
+  libXcomposite,
+  libXdamage,
+  libXtst,
+  libxkbcommon,
+  nspr,
+  nss,
+  systemd,
+  zlib,
 }:
 
 stdenv.mkDerivation rec {
@@ -36,7 +37,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://autosportlabs-software.s3.us-west-2.amazonaws.com/racecapture_linux_x86_64_${version}.deb";
-    sha256 = "sha256-OmNATAzy47eXrODzpq9Cpzpj1+Hvuyg63cczr8ifPVw="; 
+    sha256 = "sha256-OmNATAzy47eXrODzpq9Cpzpj1+Hvuyg63cczr8ifPVw=";
   };
 
   nativeBuildInputs = [
@@ -78,7 +79,10 @@ stdenv.mkDerivation rec {
       icon = "racecapture";
       desktopName = "RaceCapture";
       genericName = "Data Acquisition and Telemetry";
-      categories = [ "Utility" "Engineering" ];
+      categories = [
+        "Utility"
+        "Engineering"
+      ];
       comment = "Configuration and analysis for RaceCapture devices";
     })
   ];

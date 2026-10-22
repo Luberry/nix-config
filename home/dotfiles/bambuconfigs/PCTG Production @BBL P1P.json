@@ -1,0 +1,18 @@
+{
+    "brim_type": "no_brim",
+    "from": "User",
+    "inherits": "0.20mm Standard @BBL P1P",
+    "name": "PCTG Production @BBL P1P",
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "PCTG Production @BBL P1P",
+    "sparse_infill_density": "10%",
+    "sparse_infill_pattern": "gyroid",
+    "version": "2.1.0.10"
+}

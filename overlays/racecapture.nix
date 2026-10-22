@@ -1,3 +1,3 @@
 final: prev: {
-racecapture = final.callPackage ../pkgs/racecapture.nix { };
+  racecapture = final.callPackage ../pkgs/racecapture.nix { };
 }

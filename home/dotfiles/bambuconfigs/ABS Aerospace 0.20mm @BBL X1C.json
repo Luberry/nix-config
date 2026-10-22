@@ -1,0 +1,73 @@
+{
+    "bridge_speed": [
+        "25",
+        "nil"
+    ],
+    "default_acceleration": [
+        "4000",
+        "nil"
+    ],
+    "from": "User",
+    "gap_infill_speed": [
+        "140",
+        "nil"
+    ],
+    "inherits": "0.20mm Standard @BBL X1C",
+    "initial_layer_infill_speed": [
+        "40",
+        "nil"
+    ],
+    "initial_layer_speed": [
+        "30",
+        "nil"
+    ],
+    "inner_wall_speed": [
+        "140",
+        "nil"
+    ],
+    "internal_solid_infill_speed": [
+        "120",
+        "nil"
+    ],
+    "name": "ABS Aerospace 0.20mm @BBL X1C",
+    "outer_wall_acceleration": [
+        "2000",
+        "nil"
+    ],
+    "outer_wall_speed": [
+        "70",
+        "nil"
+    ],
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "ABS Aerospace 0.20mm @BBL X1C",
+    "skeleton_infill_density": "3%",
+    "skin_infill_density": "3%",
+    "sparse_infill_density": "3%",
+    "sparse_infill_pattern": "gyroid",
+    "sparse_infill_speed": [
+        "160",
+        "nil"
+    ],
+    "top_shell_layers": "3",
+    "top_shell_thickness": "0",
+    "top_surface_acceleration": [
+        "1000",
+        "nil"
+    ],
+    "top_surface_speed": [
+        "70",
+        "nil"
+    ],
+    "travel_acceleration": [
+        "8000",
+        "nil"
+    ],
+    "version": "2.5.0.14"
+}

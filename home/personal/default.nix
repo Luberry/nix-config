@@ -24,7 +24,7 @@
       gscan2pdf
       speedcrunch
       lutris-free
-      wineWowPackages.stagingFull
+      wineWow64Packages.stagingFull
       winetricks
       uget
       prismlauncher
@@ -45,6 +45,7 @@
       platformio
       go
       caprine
+      unstable.claude-code
 
     ];
   };

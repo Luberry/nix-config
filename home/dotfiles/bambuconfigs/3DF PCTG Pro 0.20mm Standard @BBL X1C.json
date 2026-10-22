@@ -1,0 +1,65 @@
+{
+    "bridge_speed": [
+        "40",
+        "nil"
+    ],
+    "default_acceleration": [
+        "2000",
+        "nil"
+    ],
+    "from": "User",
+    "gap_infill_speed": [
+        "150",
+        "nil"
+    ],
+    "inherits": "0.20mm Standard @BBL X1C",
+    "initial_layer_infill_speed": [
+        "100",
+        "nil"
+    ],
+    "inner_wall_speed": [
+        "250",
+        "nil"
+    ],
+    "internal_solid_infill_speed": [
+        "200",
+        "nil"
+    ],
+    "name": "3DF PCTG Pro 0.20mm Standard @BBL X1C",
+    "outer_wall_acceleration": [
+        "2000",
+        "nil"
+    ],
+    "outer_wall_speed": [
+        "100",
+        "nil"
+    ],
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "3DF PCTG Pro 0.20mm Standard @BBL X1C",
+    "sparse_infill_pattern": "cubic",
+    "sparse_infill_speed": [
+        "250",
+        "nil"
+    ],
+    "top_surface_acceleration": [
+        "1000",
+        "nil"
+    ],
+    "top_surface_speed": [
+        "100",
+        "nil"
+    ],
+    "travel_acceleration": [
+        "5000",
+        "nil"
+    ],
+    "version": "2.3.0.3",
+    "xy_hole_compensation": "0.08"
+}

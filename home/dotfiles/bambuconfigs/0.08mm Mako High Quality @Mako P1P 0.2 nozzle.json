@@ -1,0 +1,27 @@
+{
+    "bridge_speed": "35",
+    "from": "User",
+    "gap_infill_speed": "120",
+    "inherits": "0.08mm High Quality @BBL P1P 0.2 nozzle",
+    "inner_wall_speed": "120",
+    "internal_solid_infill_speed": "120",
+    "name": "0.08mm Mako High Quality @Mako P1P 0.2 nozzle",
+    "outer_wall_speed": "80",
+    "overhang_1_4_speed": "150",
+    "overhang_2_4_speed": "150",
+    "overhang_3_4_speed": "120",
+    "overhang_4_4_speed": "80",
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "0.08mm Mako High Quality @Mako P1P 0.2 nozzle",
+    "sparse_infill_speed": "120",
+    "support_speed": "120",
+    "top_surface_speed": "120",
+    "version": "2.3.0.4"
+}

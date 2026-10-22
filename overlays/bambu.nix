@@ -6,7 +6,7 @@ self: super: {
     ubuntu_version = "24.04";
 
     src = super.fetchurl {
-      url="https://github.com/bambulab/BambuStudio/releases/download/v02.05.01.52/Bambu_Studio_ubuntu-24.04_V02.05.01.52.AppImage";
+      url = "https://github.com/bambulab/BambuStudio/releases/download/v02.05.01.52/Bambu_Studio_ubuntu-24.04_V02.05.01.52.AppImage";
       sha256 = "sha256-W6creYpoeLDOkQZgsVSWLY4jK8GiaQi3NS7thtEJqCs=";
     };
 

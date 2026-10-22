@@ -29,6 +29,15 @@
             when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
           }
           {
+            key = "ctrl+alt+c";
+            command = "workbench.action.terminal.copySelection";
+            when = "terminalFocus && terminalTextSelected";
+          }
+          {
+            key = "ctrl+shift+c";
+            command = "-workbench.action.terminal.copySelection";
+          }
+          {
             key = "ctrl+alt+v";
             command = "-workbench.action.editorDictation.start";
             when = "hasSpeechProvider && !editorReadonly && !speechToTextInProgress";
@@ -41,6 +50,18 @@
           "workbench.colorTheme" = "Pitch Black";
           "platformio-ide.useBuiltinPython" = false;
           "platformio-ide.customPATH" = "/etc/profiles/per-user/dylan/bin/python3";
+          "vim.handleKeys" = {
+            "<C-`>" = false;
+          };
+          "terminal.integrated.enableKittyKeyboardProtocol" = false;
+          "terminal.integrated.commandsToSkipShell" = [
+            "-extension.vim_escape"
+            "workbench.action.terminal.selectToNextLine"
+            "workbench.action.terminal.selectToPreviousLine"
+            "workbench.action.terminal.selectToNextCharacter"
+            "workbench.action.terminal.selectToPreviousCharacter"
+
+          ];
         };
         extensions = with pkgs.vscode-extensions; [
           asvetliakov.vscode-neovim
@@ -146,7 +167,7 @@
     };
     devilspie2 = {
       enable = true;
-      config = '''';
+      config = "";
     };
     dunst = {
       enable = true;

@@ -30,7 +30,8 @@ let
     xorg.libXrandr
   ];
 
-in {
+in
+{
   x1plus = prev.stdenv.mkDerivation {
     inherit pname version;
 
