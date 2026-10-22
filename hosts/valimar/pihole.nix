@@ -30,6 +30,18 @@
         url = "https://gist.githubusercontent.com/mcrumm/972070dfe67d44ed61c4247563cbf07c/raw/62ad84e3df6404d5b05dacd5bcfdc5e97e97a1ea/LG%2520Smart-TV%2520Blocklist%2520Adlist%2520(for%2520PiHole)";
         description = "LG Smart-TV telemetry/ads";
       }
+      {
+        # Exceptions to the blocklists above; add a domain per line.
+        url = "file://${pkgs.writeText "pihole-allowlist" ''
+          thepiratebay.org
+          www.thepiratebay.org
+          # YouTube watch history (s.youtube.com is a CNAME to video-stats).
+          s.youtube.com
+          video-stats.l.google.com
+        ''}";
+        type = "allow";
+        description = "Local allowlist";
+      }
     ];
     settings = {
       dns = {
