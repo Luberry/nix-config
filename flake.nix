@@ -132,6 +132,7 @@
             ./hosts/valimar/jellyfin.nix
             ./hosts/valimar/cloudflared.nix
             ./hosts/valimar/deluge.nix
+            ./hosts/valimar/minecraft.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
