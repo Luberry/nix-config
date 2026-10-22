@@ -1,6 +1,7 @@
 # Monitoring, converted from the old dockprom compose stack:
 # prometheus + exporters + pushgateway, grafana with dockprom's dashboards
-# (read from storage), and caddy in front of grafana/openHAB on valimar.local.
+# (read from storage), and caddy in front of grafana (valimar.local), openHAB
+# (openhab.home.arpa) and pi-hole (pihole.home.arpa).
 #
 # Prometheus and the exporters only listen on localhost; grafana is the way in.
 # Job names match dockprom's so its dashboards keep working.
@@ -151,7 +152,10 @@ in
   services.caddy = {
     enable = true;
     virtualHosts."valimar.local" = {
-      serverAliases = [ "10.8.2.226" ];
+      serverAliases = [
+        "valimar.home.arpa"
+        "10.8.2.226"
+      ];
       extraConfig = ''
         tls internal
 
@@ -160,20 +164,24 @@ in
         handle /grafana/* {
           reverse_proxy 127.0.0.1:3000
         }
-
-        handle_path /openhab* {
-          reverse_proxy https://127.0.0.1:8543 {
-            header_down +Access-Control-Allow-Origin *
-            header_down +Access-Control-Allow_Credentials true
-            header_down +Access-Control-Allow-Headers Authorization,Accept,Origin,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
-            header_down +Access-Control-Allow-Methods GET,POST,OPTIONS,PUT,DELETE,PATCH
-            transport http {
-              tls_insecure_skip_verify
-            }
-          }
-        }
       '';
     };
+    # Pi-hole resolves these to valimar. openHAB's UI loads assets from absolute
+    # paths (/js, /rest, ...), so it needs its own hostname, not a sub-path.
+    virtualHosts."openhab.home.arpa".extraConfig = ''
+      tls internal
+      reverse_proxy 127.0.0.1:8180 {
+        header_down +Access-Control-Allow-Origin *
+        header_down +Access-Control-Allow_Credentials true
+        header_down +Access-Control-Allow-Headers Authorization,Accept,Origin,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+        header_down +Access-Control-Allow-Methods GET,POST,OPTIONS,PUT,DELETE,PATCH
+      }
+    '';
+    virtualHosts."pihole.home.arpa".extraConfig = ''
+      tls internal
+      redir / /admin/
+      reverse_proxy 127.0.0.1:8080
+    '';
   };
   networking.firewall.allowedTCPPorts = [
     80

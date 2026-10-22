@@ -127,6 +127,7 @@
             ./hosts/valimar/deconz.nix
             ./hosts/valimar/ups.nix
             ./hosts/valimar/monitoring.nix
+            ./hosts/valimar/pihole.nix
             ./devices/valimar/default.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
