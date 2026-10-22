@@ -1,12 +1,17 @@
 # deCONZ (Zigbee gateway for the ConBee II), native module.
-# Data was migrated from the old container's /storage/storage/docker/config/deconz
-# into /var/lib/deconz/.local/share/dresden-elektronik/deCONZ.
+#
+# Its database (paired devices, openHAB's API key, ...) stays on the storage
+# pool, in the old container's config dir, so it survives a reinstall:
+# it's bind-mounted to where deCONZ expects it under its state dir.
 {
   config,
   pkgs,
   lib,
   ...
 }:
+let
+  dataDir = "/storage/storage/docker/config/deconz";
+in
 {
   services.deconz = {
     enable = true;
@@ -24,5 +29,28 @@
     httpPort = 8280;
     wsPort = 8643;
     openFirewall = true;
+  };
+
+  # A fixed uid instead of the module's DynamicUser, so the files on storage
+  # stay writable across reinstalls.
+  users.users.deconz = {
+    isSystemUser = true;
+    uid = 8280;
+    group = "deconz";
+    extraGroups = [ "dialout" ];
+  };
+  users.groups.deconz.gid = 8280;
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/deconz/.local/share/dresden-elektronik/deCONZ 0750 deconz deconz -"
+  ];
+  systemd.services.deconz = {
+    unitConfig.RequiresMountsFor = [ dataDir ];
+    serviceConfig = {
+      DynamicUser = lib.mkForce false;
+      User = "deconz";
+      Group = "deconz";
+      BindPaths = [ "${dataDir}:/var/lib/deconz/.local/share/dresden-elektronik/deCONZ" ];
+    };
   };
 }
