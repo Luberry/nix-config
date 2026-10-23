@@ -1,7 +1,8 @@
 # Jellyfin, native module. The container's /config layout (config, data, log,
 # metadata, plugins, root) matches the module's, so it points straight at the
-# old config dir on the storage pool. Libraries still refer to /media, which is
-# bind-mounted back into the service.
+# old config dir on the storage pool. Paths stored from the container days
+# (/media for libraries, /config for metadata images) are bind-mounted back
+# into the service.
 {
   config,
   pkgs,
@@ -41,7 +42,11 @@ in
       # The module's 0077 would make anything it writes into the library
       # unreadable to plex and samba.
       UMask = lib.mkForce "0002";
-      BindPaths = [ "${media}:/media" ];
+      BindPaths = [
+        "${media}:/media"
+        # Image paths in the database point into the container's /config.
+        "${dataDir}:/config"
+      ];
     };
   };
 }
