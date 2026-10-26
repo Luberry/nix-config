@@ -5,9 +5,13 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
+  # Temporary bump to 2026.10.3; see overlays/cloudflared.nix.
+  nixpkgs.overlays = [ (import ../../overlays/cloudflared.nix { inherit inputs; }) ];
+
   sops.secrets.cloudflared-token.sopsFile = ../../secrets/valimar.yaml;
 
   systemd.services.cloudflared = {
