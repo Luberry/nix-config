@@ -43,7 +43,9 @@ in
         TZ = "America/Chicago";
         OPENHAB_HTTP_PORT = "8180";
         OPENHAB_HTTPS_PORT = "8543";
-        EXTRA_JAVA_OPTS = "-Duser.timezone=America/Chicago";
+        # TLSv1.2 only: since the 5.2.4 image (JDK 21.0.13), Jetty's TLS 1.3
+        # responses on 8543 fail with "length mismatch", which broke the app.
+        EXTRA_JAVA_OPTS = "-Duser.timezone=America/Chicago -Djdk.tls.server.protocols=TLSv1.2";
       };
       volumes = [
         "${configDir}/openhab_addons:/openhab/addons"

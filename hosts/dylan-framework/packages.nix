@@ -14,9 +14,8 @@
   ];
   environment.systemPackages = with pkgs; [
     wlroots_0_19
-    orca-slicer-appimage
+    orca-slicer
     spacenavd
-    bambu-studio-appimage
     racecapture
     go
     qemu
