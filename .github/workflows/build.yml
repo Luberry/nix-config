@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [valimar, dylan-framework]
+        host: [valimar]
     steps:
       # Runners only have ~14GB free; a full system closure needs more.
       - name: Free disk space
