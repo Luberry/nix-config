@@ -20,6 +20,18 @@ let
       options:
         kickolduser: true
   '';
+  # Since the 5.2.4 image (Jetty 9.4.58, JDK 21.0.13) TLS 1.3 on 8543 breaks:
+  # responses arrive as malformed records ("length mismatch") and the app gets
+  # a 500. Drop TLS 1.3 from Jetty's connector; -Djdk.tls.server.protocols
+  # doesn't work because Jetty sets its own protocol list. The image sources
+  # /etc/cont-init.d/* before starting openHAB. Remove once a newer image fixes it.
+  jettyNoTls13 = pkgs.writeText "jetty-no-tls13.sh" ''
+    jetty=/openhab/runtime/etc/jetty.xml
+    if ! grep -q addExcludeProtocols "$jetty"; then
+      sed -i '/<New id="sslContextFactory"/a\
+    <Call name="addExcludeProtocols"><Arg><Array type="String"><Item>TLSv1.3</Item></Array></Arg></Call>' "$jetty"
+    fi
+  '';
 in
 {
   systemd.services.ser2net = {
@@ -43,14 +55,13 @@ in
         TZ = "America/Chicago";
         OPENHAB_HTTP_PORT = "8180";
         OPENHAB_HTTPS_PORT = "8543";
-        # TLSv1.2 only: since the 5.2.4 image (JDK 21.0.13), Jetty's TLS 1.3
-        # responses on 8543 fail with "length mismatch", which broke the app.
-        EXTRA_JAVA_OPTS = "-Duser.timezone=America/Chicago -Djdk.tls.server.protocols=TLSv1.2";
+        EXTRA_JAVA_OPTS = "-Duser.timezone=America/Chicago";
       };
       volumes = [
         "${configDir}/openhab_addons:/openhab/addons"
         "${configDir}/openhab_conf:/openhab/conf"
         "${configDir}/openhab_userdata:/openhab/userdata"
+        "${jettyNoTls13}:/etc/cont-init.d/10-jetty-no-tls13.sh:ro"
       ];
     };
   };
