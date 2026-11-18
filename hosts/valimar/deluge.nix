@@ -31,7 +31,7 @@ in
 
   virtualisation.oci-containers.containers = {
     delugevpn = {
-      image = "binhex/arch-delugevpn:2.2.0-8-01";
+      image = "binhex/arch-delugevpn:2.2.0-9-01";
       pull = "always";
       ports = [
         "8112:8112" # web UI
