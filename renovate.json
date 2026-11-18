@@ -1,0 +1,27 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["custom.regex"],
+  "customManagers": [
+    {
+      "description": "Pinned OCI container images in NixOS modules",
+      "customType": "regex",
+      "managerFilePatterns": ["/^hosts/.+\\.nix$/"],
+      "matchStrings": ["image = \"(?<depName>[^\":]+):(?<currentValue>[^\"]+)\";"],
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "openHAB: stable 5.x releases only (no milestones, RCs or snapshots)",
+      "matchDepNames": ["openhab/openhab"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
+      "allowedVersions": "/^5\\./"
+    },
+    {
+      "description": "delugevpn: binhex's <version>-<build>-<revision> tags, without the libtorrentv1 variant",
+      "matchDepNames": ["binhex/arch-delugevpn"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<build>\\d+)-(?<revision>\\d+)$"
+    }
+  ]
+}

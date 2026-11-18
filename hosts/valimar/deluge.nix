@@ -32,6 +32,7 @@ in
   virtualisation.oci-containers.containers = {
     delugevpn = {
       image = "binhex/arch-delugevpn:2.2.0-8-01";
+      pull = "always";
       ports = [
         "8112:8112" # web UI
         "58846:58846" # daemon (flexget connects here)
@@ -69,6 +70,7 @@ in
 
     flexget = {
       image = "wiserain/flexget";
+      pull = "always";
       # Web UI on :5050/flexget; reaches deluge on 10.8.2.226:58846.
       extraOptions = [ "--network=host" ];
       volumes = [

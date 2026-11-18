@@ -15,6 +15,7 @@ in
 {
   virtualisation.oci-containers.containers.minecraft = {
     image = "itzg/minecraft-server";
+    pull = "always";
     ports = [ "25565:25565" ];
     volumes = [ "${dataDir}:/data" ];
     environment = {
