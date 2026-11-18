@@ -1,7 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "enabledManagers": ["custom.regex"],
+  "timezone": "America/Chicago",
+  "enabledManagers": ["custom.regex", "nix"],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "description": "Weekly `nix flake update`; mostly security/bug fixes since nixpkgs tracks a stable channel",
+    "enabled": true,
+    "schedule": ["before 6am on friday"]
+  },
   "customManagers": [
     {
       "description": "Pinned OCI container images in NixOS modules",
