@@ -26,14 +26,10 @@
         description = "LG Smart-TV telemetry/ads";
       }
       {
-        # Exceptions to the blocklists above; add a domain per line.
-        url = "file://${pkgs.writeText "pihole-allowlist" ''
-          thepiratebay.org
-          www.thepiratebay.org
-          # YouTube watch history (s.youtube.com is a CNAME to video-stats).
-          s.youtube.com
-          video-stats.l.google.com
-        ''}";
+        # Fixed path, not a store path: the module only ever adds lists, so a
+        # store path would leave a stale list entry behind on every edit.
+        # Contents are in environment.etc below.
+        url = "file:///etc/pihole/allowlist.txt";
         type = "allow";
         description = "Local allowlist";
       }
@@ -61,5 +57,17 @@
     enable = true;
     ports = [ 8080 ];
   };
+  # Exceptions to the blocklists; add a domain per line. Editing this restarts
+  # pihole-ftl, which pulls in pihole-ftl-setup and its gravity run.
+  systemd.services.pihole-ftl.restartTriggers = [
+    config.environment.etc."pihole/allowlist.txt".source
+  ];
+  environment.etc."pihole/allowlist.txt".text = ''
+    thepiratebay.org
+    www.thepiratebay.org
+    # YouTube watch history (s.youtube.com is a CNAME to video-stats).
+    s.youtube.com
+    video-stats.l.google.com
+  '';
   systemd.services.pihole-ftl.serviceConfig.EnvironmentFile = config.sops.secrets.pihole-env.path;
 }
