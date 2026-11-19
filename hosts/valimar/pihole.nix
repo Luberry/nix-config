@@ -22,11 +22,6 @@
         description = "Steven Black's unified adlist";
       }
       {
-        # Merged list of many public adlists (https://github.com/r0xd4n3t/pihole-adblock-lists).
-        url = "https://raw.githubusercontent.com/r0xd4n3t/pihole-adblock-lists/main/pihole_adlists.txt";
-        description = "r0xd4n3t curated adlists";
-      }
-      {
         url = "https://gist.githubusercontent.com/mcrumm/972070dfe67d44ed61c4247563cbf07c/raw/62ad84e3df6404d5b05dacd5bcfdc5e97e97a1ea/LG%2520Smart-TV%2520Blocklist%2520Adlist%2520(for%2520PiHole)";
         description = "LG Smart-TV telemetry/ads";
       }
