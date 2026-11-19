@@ -48,7 +48,7 @@ in
     # docker is already enabled on valimar; don't pull in podman as well.
     backend = "docker";
     containers.openhab = {
-      image = "openhab/openhab:5.2.4";
+      image = "openhab/openhab:5.2.5";
       pull = "always";
       extraOptions = [ "--network=host" ];
       environment = {
